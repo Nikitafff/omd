@@ -68,9 +68,12 @@ if __name__ == '__main__':
     g = Game()
     g.start()
     for mode in range(g.difficulty * 3):
-        while g.life > 0:
-            g.take_step('location')
-            g.take_step('scenario')
-            g.chapter_enter()
-            g.challenge()
-    print('Game over!')
+        g.take_step('location')
+        g.take_step('scenario')
+        g.chapter_enter()
+        g.challenge()
+        if g.life <= 0:
+            input('Game over!')
+            exit()
+    print("You nailed it!")
+
