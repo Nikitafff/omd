@@ -5,14 +5,17 @@ def check_braces(braces):
         ']': '['
     }
     list = []
-    for index, brace in enumerate(braces):
+    for brace in braces:
         if brace in checker.values():
             list.append(brace)
-            print(list)
-        elif brace in checker.keys():
+        elif list and brace in checker.keys():
             if list[-1] == checker[brace]:
                 list.pop()
             else:
-                print(list)
                 return 'Error %s' % brace
-print(check_braces('() ((([])))}'))
+        elif not list and brace in checker.keys():
+            return 'Error %s' % brace
+print(check_braces('[( )]'))
+
+
+#() ((([])))}
